@@ -1,0 +1,81 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "code activity",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GithubIntent",
+                    "slots": [
+                        {
+                            "name": "username",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "username",
+                                "firstname surname"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "latest commits from {username}",
+                        "latest activity from {username}",
+                        "the latest activity from {username}",
+                        "the latest commits from {username}",
+                        "commits from {username}"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "GithubIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "username",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.username"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.username",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which user would you like to search for?"
+                    }
+                ]
+            }
+        ]
+    }
+}
